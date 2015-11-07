@@ -17,6 +17,7 @@ int main( int argc, char* args[] )
     srand(time(NULL));
 
     printf("Hello Fred!\n");
+
     SDL_Log("Fred-->Hello SDL_LOG 2\n");
 
     /******************************************************************************************************************
@@ -52,7 +53,7 @@ int main( int argc, char* args[] )
 
     SDL_Log("Chargement image\n");
     // Chargement de l'image
-    SDL_Surface *pSurface = SDL_LoadBMP ("PetitBateau1.bmp");
+    SDL_Surface *pSurface = SDL_LoadBMP ("images/PetitBateau1.bmp");
     if(!pSurface) {
     	SDL_Log("Chargement ERROR\n");
     	printf( "SDL_Surface ERREUR! SDL_GetError: %s\n", SDL_GetError() ); return -1;

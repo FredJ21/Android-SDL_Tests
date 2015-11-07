@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1446916533 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\main.c
+	<SDL.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+

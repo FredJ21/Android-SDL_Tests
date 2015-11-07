@@ -1,9 +1,10 @@
 FredJ21
 
-Test Android SDK / NDK / SDL2 
+	+-----------------------------------------------+
+	|          Eclipse & CodeBlocks  Project        |
+	+-----------------------------------------------+
 
-Eclipse Project
-
+		Tests Android SDK / NDK / SDL2 
 
 
 Nov 2015
