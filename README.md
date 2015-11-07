@@ -1,5 +1,9 @@
 FredJ21
 
-Test ANdroid SDK / NDK / SDL2 
+Test Android SDK / NDK / SDL2 
+
+Eclipse Project
 
 
+
+Nov 2015
