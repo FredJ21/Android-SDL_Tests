@@ -88,9 +88,14 @@
  /cygdrive/c/Users/fred/Documents/FRED-DEV/Android-SDL_Tests/jni/src/../SDL/include/SDL_system.h \
  /cygdrive/c/Users/fred/Documents/FRED-DEV/Android-SDL_Tests/jni/src/../SDL/include/SDL_timer.h \
  /cygdrive/c/Users/fred/Documents/FRED-DEV/Android-SDL_Tests/jni/src/../SDL/include/SDL_version.h \
+ /cygdrive/c/Users/fred/Documents/FRED-DEV/Android-SDL_Tests/jni/src/SDL_ttf.h \
+ /cygdrive/c/Users/fred/Documents/FRED-DEV/Android-SDL_Tests/jni/src/../SDL/include/begin_code.h \
+ /cygdrive/c/Users/fred/Documents/FRED-DEV/Android-SDL_Tests/jni/src/../SDL/include/close_code.h \
  /cygdrive/c/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/time.h \
  /cygdrive/c/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/sys/time.h \
- /cygdrive/c/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/linux/time.h
+ /cygdrive/c/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/linux/time.h \
+ /cygdrive/c/Users/fred/Documents/FRED-DEV/Android-SDL_Tests/jni/src/config.h \
+ /cygdrive/c/Users/fred/Documents/FRED-DEV/Android-SDL_Tests/jni/src/anim.h
 
 /cygdrive/c/Users/fred/Documents/FRED-DEV/Android-SDL_Tests/jni/src/../SDL/include/SDL.h:
 
@@ -268,8 +273,18 @@
 
 /cygdrive/c/Users/fred/Documents/FRED-DEV/Android-SDL_Tests/jni/src/../SDL/include/SDL_version.h:
 
+/cygdrive/c/Users/fred/Documents/FRED-DEV/Android-SDL_Tests/jni/src/SDL_ttf.h:
+
+/cygdrive/c/Users/fred/Documents/FRED-DEV/Android-SDL_Tests/jni/src/../SDL/include/begin_code.h:
+
+/cygdrive/c/Users/fred/Documents/FRED-DEV/Android-SDL_Tests/jni/src/../SDL/include/close_code.h:
+
 /cygdrive/c/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/time.h:
 
 /cygdrive/c/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/sys/time.h:
 
 /cygdrive/c/android-ndk-r10e/platforms/android-15/arch-arm/usr/include/linux/time.h:
+
+/cygdrive/c/Users/fred/Documents/FRED-DEV/Android-SDL_Tests/jni/src/config.h:
+
+/cygdrive/c/Users/fred/Documents/FRED-DEV/Android-SDL_Tests/jni/src/anim.h:

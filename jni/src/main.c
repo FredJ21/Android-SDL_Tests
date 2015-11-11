@@ -1,16 +1,20 @@
 #include <SDL.h>
+#include <SDL_ttf.h>
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
+#include "config.h"
+#include "anim.h"
+
 #define MAP_TAILLE_X        1024
 #define MAP_TAILLE_Y         768
-#define APP_TITRE           "Test SDL 2"
 #define false   0
 #define true    1
 #define bool    short int
 
+#define GAME_FPS              30       // a repasser à 30
 
 int main( int argc, char* args[] )
 {
@@ -48,28 +52,64 @@ int main( int argc, char* args[] )
 
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     // permet d'obtenir les redimensionnements plus doux.
-  //  SDL_RenderSetLogicalSize(pRenderer, MAP_TAILLE_X, MAP_TAILLE_Y);
+    SDL_RenderSetLogicalSize(pRenderer, MAP_TAILLE_X, MAP_TAILLE_Y);
 
 
     SDL_Log("Chargement image\n");
     // Chargement de l'image
-    SDL_Surface *pSurface = SDL_LoadBMP ("images/PetitBateau1.bmp");
+    SDL_Surface *pSurface = SDL_LoadBMP (START_IMG);
     if(!pSurface) {
-    	SDL_Log("Chargement ERROR\n");
+    	SDL_Log("Chargement image ERROR\n");
     	printf( "SDL_Surface ERREUR! SDL_GetError: %s\n", SDL_GetError() ); return -1;
     }
-    SDL_Log("Chargement ok\n");
 
     // Création de la texture (texture = surface dans le GPU)
     SDL_Texture *pTexture = SDL_CreateTextureFromSurface(pRenderer, pSurface);
     if(!pTexture) {                         printf( "SDL_Texture ERREUR! SDL_GetError: %s\n", SDL_GetError() ); return -1;}
 
+    /******************************************************************************************************************
+                                                INIT SDL 2 TTF
+    *******************************************************************************************************************/
+    // Initialize SDL TTF
+    if( TTF_Init() != 0 ) {  printf( "TTF_Init ERREUR ! SDL_GetError: %s\n", SDL_GetError() ); return -1; }
 
-    SDL_RenderCopy (pRenderer, pTexture, NULL, NULL);
-    //SDL_SetRenderDrawColor (pRenderer, 254, 0, 0, 0);
-    //SDL_RenderFillRect(pRenderer, NULL);
-    SDL_RenderPresent (pRenderer);
+    // pour le titre de chaque level
+    TTF_Font *police_level_titre;
+    police_level_titre = TTF_OpenFont(POLICE_LEVEL_TITRE, POLICE_LEVEL_TITRE_SIZE);
+    if(!police_level_titre) {                  printf( "TTF_OpenFont ERREUR! SDL_GetError: %s\n", SDL_GetError() ); return -1;}
 
+
+    SDL_Surface *texte = NULL;
+    SDL_Texture     *pTexture_MAP_Titre;
+
+    SDL_Color couleur = {200, 100, 100, 0};
+
+    SDL_Rect        Titre_position_src;
+    SDL_Rect        Titre_position_dst;
+
+    texte = TTF_RenderText_Blended(police_level_titre, "Hello Fred !", couleur);
+    Titre_position_src.x = 0;
+    Titre_position_src.y = 0;
+    Titre_position_src.h = texte->h;
+    Titre_position_src.w = texte->w;
+    Titre_position_dst.x = 0;
+    Titre_position_dst.y = MAP_TAILLE_Y/2;
+    Titre_position_dst.h = texte->h;
+    Titre_position_dst.w = texte->w;
+
+    // Création de la texture pour le texte
+    pTexture_MAP_Titre = SDL_CreateTextureFromSurface(pRenderer, texte);
+    if(!pTexture_MAP_Titre) {                  printf( "SDL Texture ERREUR! SDL_GetError: %s\n", SDL_GetError() ); exit(-1);}
+
+    SDL_FreeSurface(texte);
+
+
+    /******************************************************************************************************************
+                                                VARIABLES
+    *******************************************************************************************************************/
+    time_t t_Avant_Traitement;          // permet de gérer les fps
+    time_t t_Apres_Traitement;
+    Uint32  game_sleep;
 
     bool flag_fin = false;
 
@@ -78,10 +118,28 @@ int main( int argc, char* args[] )
     int B = 0;
     int a = 0;
 
+    int text_move_x = 10;
+    int text_move_y = 10;
+
+    /******************************************************************************************************************
+                                                INIT GAME
+    *******************************************************************************************************************/
+    /** ANIMATION **/
+
+    t_animation DRAPEAU = { "images/Flag.bmp", 31, 40, 11, 11, 11, NULL, 3, 1 };
+    init_animation( &DRAPEAU, pRenderer);
+
+    /* SPRITE ARRIVE */
+    t_sprite *ARRIVE;
+    ARRIVE = init_sprite (&DRAPEAU);
+
+
+    place_sprite(ARRIVE, 11, 12);
+
+
     while (!flag_fin) {
 
-
-
+        t_Avant_Traitement = clock();
 
         /******************************************************************************************************************
                                                     GESTION DES EVENEMENTS
@@ -104,33 +162,63 @@ int main( int argc, char* args[] )
                     }
                     break;
             }
-
-
-
         }
 
-/*
-        R = rand()%254;
-        V = rand()%254;
-        B = rand()%254;
+        /******************************************************************************************************************
+                                                    Modification position du texte
+        *******************************************************************************************************************/
+        Titre_position_dst.x += text_move_x;
+        Titre_position_dst.y += text_move_y;
+
+        if (Titre_position_dst.x > MAP_TAILLE_X - Titre_position_dst.w) { text_move_x = -10; }
+        if (Titre_position_dst.y > MAP_TAILLE_Y - Titre_position_dst.h) { text_move_y = -10; }
+        if (Titre_position_dst.x < 0) { text_move_x = 10; }
+        if (Titre_position_dst.y < 0) { text_move_y = 10; }
 
 
-        SDL_Log("%d %d %d ! %d\n", R, V, B, a);
+        /******************************************************************************************************************
+                                                    AFFICHAGE
+        *******************************************************************************************************************/
+        SDL_RenderClear     (pRenderer);
 
-        SDL_SetRenderDrawColor (pRenderer, R, V, B, 0);
-        SDL_RenderFillRect(pRenderer, NULL);
-*/
-        //SDL_RenderPresent (pRenderer);
+        SDL_RenderCopy (pRenderer, pTexture, NULL, NULL);
 
-        SDL_Delay(100);
+        // TEXTE
+        SDL_RenderCopy   (pRenderer, pTexture_MAP_Titre,  &Titre_position_src, &Titre_position_dst);
 
-        a++;
-        if (a>100) {
-        	flag_fin = true;
-        }
+        // Affichage de l'arrivé
+        anime_sprite(ARRIVE);
+        affiche_sprite (pRenderer, ARRIVE);
 
+        SDL_RenderPresent (pRenderer);
+
+
+        /************************************************/
+        /**   Calcul du temps de traitement et pause   **/
+        /************************************************/
+        t_Apres_Traitement = clock();
+        //game_sleep = 1000 / GAME_FPS - (t_Apres_Traitement - t_Avant_Traitement);
+        game_sleep = 1000 / GAME_FPS ;
+        //SDL_Log("sleep : %d\n", game_sleep);
+
+        SDL_Delay( game_sleep );
 
     }
-    SDL_Log("Fred-->Fin\n");
+
+    /******************************************************************************************************************
+                                                    FIN
+    *******************************************************************************************************************/
+   SDL_Log("Fred-->Fin\n");
+
+    destroy_sprite(&ARRIVE);
+
+    SDL_DestroyTexture(pTexture);
+    SDL_DestroyTexture(pTexture_MAP_Titre);
+    SDL_FreeSurface(pSurface);
+    SDL_DestroyRenderer(pRenderer);
+    SDL_DestroyWindow( pWindow );
+
+    SDL_Quit();
+
     return 0;
 }

@@ -1,7 +1,22 @@
 # depslib dependency file v1.0
-1446916533 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\main.c
+1447000348 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\main.c
+	<SDL.h>
+	<SDL_ttf.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"config.h"
+	"anim.h"
+
+1447000386 c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\config.h
+
+1446978455 c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\anim.h
+
+1447000367 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\anim.c
 	<SDL.h>
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
+	"config.h"
+	"anim.h"
 

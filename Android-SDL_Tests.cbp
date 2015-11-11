@@ -15,7 +15,7 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add option="-lmingw32 -lSDL2main -lSDL2" />
+					<Add option="-lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -34,6 +34,11 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="jni/src/anim.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="jni/src/anim.h" />
+		<Unit filename="jni/src/config.h" />
 		<Unit filename="jni/src/main.c">
 			<Option compilerVar="CC" />
 		</Unit>
