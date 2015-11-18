@@ -42,7 +42,7 @@ int main( int argc, char* args[] )
 
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     // permet d'obtenir les redimensionnements plus doux.
-    SDL_RenderSetLogicalSize(pRenderer, MAP_TAILLE_X, MAP_TAILLE_Y);
+ //   SDL_RenderSetLogicalSize(pRenderer, MAP_TAILLE_X, MAP_TAILLE_Y);
 
 
     // Chargement de l'image
