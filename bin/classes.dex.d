@@ -1,0 +1,23 @@
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes.dex : \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/libsdl/app/SDLJoystickHandler_API12$RangeComparator.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/libsdl/app/SDLGenericMotionListener_API12.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/libsdl/app/SDLSurface$1.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/libsdl/app/SDLJoystickHandler_API12$SDLJoystick.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/libsdl/app/SDLActivity$ShowTextInputTask.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/libsdl/app/SDLMain.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/libsdl/app/SDLJoystickHandler_API12.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/libsdl/app/SDLActivity$SDLCommandHandler.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/libsdl/app/DummyEdit.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/libsdl/app/SDLSurface.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/libsdl/app/SDLJoystickHandler.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/libsdl/app/SDLActivity.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/libsdl/app/SDLInputConnection.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/libsdl/app/SDLActivity$1.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/fredj21/testjeu/BuildConfig.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/fredj21/testjeu/R$drawable.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/fredj21/testjeu/R.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/fredj21/testjeu/testjeuActivity.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/fredj21/testjeu/R$string.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/fredj21/testjeu/R$attr.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/classes/org/fredj21/testjeu/R$layout.class \
+/usr/src/SDL2-2.0.3/build/org.fredj21.testjeu/bin/dexedLibs/annotations-f92c2fa705dd42d2ef73136f9a8779d7.jar \

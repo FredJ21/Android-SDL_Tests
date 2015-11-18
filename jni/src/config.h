@@ -15,7 +15,7 @@
 // CONFIG
 #define APP_TITRE           "Battle BOATS - By Fred & Mathis"
 #define COULEUR_FENETRE     NOIR
-#define START_IMG           "images/1024x768.bmp"
+#define START_IMG           "images/start.bmp"
 
 #define GAME_FPS              30       // a repasser à 30
 
@@ -35,7 +35,7 @@
 #define MISSILE_SPEED            15
 
 #define POLICE_LEVEL_TITRE      "fonts/Alex_Bold.ttf"
-#define POLICE_LEVEL_TITRE_SIZE  60
+#define POLICE_LEVEL_TITRE_SIZE 150
 
 #define POLICE_SCORE            "fonts/DS-DIGIB.TTF"
 #define POLICE_SCORE_SIZE       30

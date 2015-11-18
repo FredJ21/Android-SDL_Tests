@@ -51,6 +51,7 @@ t_sprite*   create_Enemy            (int position, int A, int B, t_animation *AN
                                         // *ANIM    --> pointeur sur l'annimation
                                         // Frequence --> Frequence de démarrage entre chaque ennemi
 
+void        avance_sprite           (t_sprite *s, t_level *pLevel);
 void        anime_sprite            (t_sprite *s);
 void        affiche_sprite          (SDL_Renderer *r, t_sprite *s);
 void        place_sprite            (t_sprite *s, int x, int y);      // X et Y sont des coordonnés de MAP
