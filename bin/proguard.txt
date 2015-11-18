@@ -1,3 +1,0 @@
-# view AndroidManifest.xml #generated:25
--keep class org.fredj21.testjeu.testjeuActivity { <init>(...); }
-
