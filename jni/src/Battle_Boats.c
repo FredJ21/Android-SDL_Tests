@@ -31,7 +31,7 @@ int main( int argc, char* args[] )
 
     // Création de la fenêtre
     SDL_Window *pWindow = NULL;
-///    pWindow = SDL_CreateWindow( APP_TITRE , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, MAP_TAILLE_X, MAP_TAILLE_Y, SDL_WINDOW_SHOWN );
+//    pWindow = SDL_CreateWindow( APP_TITRE , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, MAP_TAILLE_X, MAP_TAILLE_Y, SDL_WINDOW_SHOWN );
     pWindow = SDL_CreateWindow( APP_TITRE , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP );
     if(!pWindow) {                          printf( "SDL_Window ERREUR! SDL_GetError: %s\n", SDL_GetError() ); return -1;}
 
@@ -42,7 +42,7 @@ int main( int argc, char* args[] )
 
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
     // permet d'obtenir les redimensionnements plus doux.
- //   SDL_RenderSetLogicalSize(pRenderer, MAP_TAILLE_X, MAP_TAILLE_Y);
+    SDL_RenderSetLogicalSize(pRenderer, MAP_TAILLE_X, MAP_TAILLE_Y);
 
 
     // Chargement de l'image
@@ -56,7 +56,7 @@ int main( int argc, char* args[] )
 
     SDL_RenderCopy (pRenderer, pTexture, NULL, NULL);
     SDL_RenderPresent (pRenderer);
-    SDL_Delay( 3000 );
+    SDL_Delay( 1000 );
 
     /******************************************************************************************************************
                                                 INIT SDL 2 TTF
@@ -84,12 +84,12 @@ int main( int argc, char* args[] )
 
     bool flag_tower_position_ok      = false;        // vrai si la tourelle n'est pas dans l'eau
 
-    time_t t_Avant_Traitement;          // permet de gérer les fps
-    time_t t_Apres_Traitement;
+    unsigned int t_Avant_Traitement;          // permet de gérer les fps
+    unsigned int t_Apres_Traitement;
 
-    time_t CounterSecond = clock();     // traitement toute les second
+    unsigned int CounterSecond = 0;     // traitement toute les second
     int CounterBeforeChgLevel = 0;      // pause avant le changement de level
-    int CounterTimeLevel =0;            // second depuis le demarrage du level
+    int CounterTimeLevel = 0;            // second depuis le demarrage du level
 
     int a = 0, b = 0, w = 0;
     int current_level       = 0;
@@ -179,7 +179,7 @@ int main( int argc, char* args[] )
     *******************************************************************************************************************/
     while (!flag_fin) {
 
-        t_Avant_Traitement = clock();
+        t_Avant_Traitement = SDL_GetTicks();
 
 
         /******************************************************************************************************************
@@ -368,7 +368,7 @@ int main( int argc, char* args[] )
        /******************************************************************************************************************
                                                     TRAITEMENTS TOUTES LES SECONDES
         *******************************************************************************************************************/
-        if (clock() > CounterSecond + 1000) {
+        if (SDL_GetTicks() > CounterSecond + 1000) {
 
             // compte le nombre d'ennemi en vie
             current_enemy_alive = 0;
@@ -406,7 +406,7 @@ int main( int argc, char* args[] )
             }
 
             CounterTimeLevel++;
-            CounterSecond = clock();
+            CounterSecond = SDL_GetTicks();
         }
         /******************************************************************************************************************
                                                     COLLISION
@@ -477,10 +477,10 @@ int main( int argc, char* args[] )
         /************************************************/
         /**   Calcul du temps de traitement et pause   **/
         /************************************************/
-        t_Apres_Traitement = clock();
-        //game_sleep = 1000 / GAME_FPS - (t_Avant_Traitement - t_Apres_Traitement);
+        t_Apres_Traitement = SDL_GetTicks();
+        game_sleep = 1000 / GAME_FPS - (t_Avant_Traitement - t_Apres_Traitement);
         /** TODO :  calcul du temps de traitement sur Android **/
-        game_sleep = 1000 / GAME_FPS;
+        //game_sleep = 1000 / GAME_FPS;
         SDL_Delay( game_sleep );
     }
 

@@ -93,3 +93,97 @@
 	"anim.h"
 	"tower.h"
 
+1447876903 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\affichage_texte.c
+	<SDL.h>
+	<SDL_ttf.h>
+	<stdio.h>
+	<stdlib.h>
+	"config.h"
+	"affichage_texte.h"
+
+1448042406 c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\config.h
+
+1447876903 c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\affichage_texte.h
+
+1447876903 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\algo_a_star.c
+	<SDL.h>
+	<SDL_ttf.h>
+	<stdio.h>
+	<stdlib.h>
+	"config.h"
+	"level.h"
+	"Algo_A_star.h"
+
+1447876903 c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\level.h
+
+1447876903 c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\algo_a_star.h
+
+1447876903 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\algo_collision.c
+	<SDL.h>
+	<SDL_ttf.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"config.h"
+	"level.h"
+	"anim.h"
+	"tower.h"
+	"Algo_Collision.h"
+
+1447876903 c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\anim.h
+
+1447876903 c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\tower.h
+
+1447876903 c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\algo_collision.h
+
+1447876903 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\anim.c
+	<SDL.h>
+	<SDL_ttf.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"config.h"
+	"level.h"
+	"anim.h"
+
+1448042089 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\battle_boats.c
+	<SDL.h>
+	<SDL_ttf.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"config.h"
+	"Battle_boats.h"
+	"level.h"
+	"anim.h"
+	"Algo_A_star.h"
+	"affichage_texte.h"
+	"tower.h"
+	"Algo_Collision.h"
+
+1447876903 c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\battle_boats.h
+
+1448042447 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\level.c
+	<SDL.h>
+	<SDL_ttf.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"config.h"
+	"level.h"
+	"Algo_A_star.h"
+
+1447876903 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\tower.c
+	<SDL.h>
+	<SDL_ttf.h>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<math.h>
+	"config.h"
+	"level.h"
+	"anim.h"
+	"tower.h"
+
