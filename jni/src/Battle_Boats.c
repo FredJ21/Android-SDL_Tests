@@ -31,8 +31,8 @@ int main( int argc, char* args[] )
 
     // Création de la fenêtre
     SDL_Window *pWindow = NULL;
-//    pWindow = SDL_CreateWindow( APP_TITRE , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, MAP_TAILLE_X, MAP_TAILLE_Y, SDL_WINDOW_SHOWN );
-    pWindow = SDL_CreateWindow( APP_TITRE , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP );
+    pWindow = SDL_CreateWindow( APP_TITRE , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, MAP_TAILLE_X, MAP_TAILLE_Y, SDL_WINDOW_SHOWN );
+//    pWindow = SDL_CreateWindow( APP_TITRE , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP );
     if(!pWindow) {                          printf( "SDL_Window ERREUR! SDL_GetError: %s\n", SDL_GetError() ); return -1;}
 
 
@@ -104,7 +104,7 @@ int main( int argc, char* args[] )
 
     int current_mouse_x, current_mouse_y;
 
-    Uint32  game_sleep;
+    unsigned int  game_sleep;
 
     srand(time(NULL));
 
@@ -127,8 +127,8 @@ int main( int argc, char* args[] )
     ANIM[0].vitesse         = 2;
 
     strcpy(ANIM[1].file,   "images/PetitBateau2.bmp");
-    ANIM[1].tx              = 48;
-    ANIM[1].ty              = 48;
+    ANIM[1].tx              = 72;
+    ANIM[1].ty              = 72;
     ANIM[1].nb_colonne      = 3;
     ANIM[1].nb_image        = 12;
     ANIM[1].nb_img_by_dir   = 3;
@@ -211,7 +211,7 @@ int main( int argc, char* args[] )
                         case SDLK_m:
 
                             break;
-                        case SDLK_t:
+                        case SDLK_t :
                             if (flag_mode_game && current_nb_tower < TOWER_MAX) {
 
                                 flag_mode_place_tower = true;
@@ -235,8 +235,23 @@ int main( int argc, char* args[] )
                     }
                     break;
 
+                case SDL_FINGERDOWN:
+                    if (flag_mode_game && current_nb_tower < TOWER_MAX) {
+
+                                flag_mode_place_tower = true;
+                                flag_mode_game = false;
+
+                            } else if (flag_mode_place_tower) {
+
+                                flag_mode_place_tower = false;
+                                flag_mode_game = true;
+
+                            }
+
+
                 // Souris
-                case SDL_MOUSEMOTION:
+//                case SDL_MOUSEMOTION :
+                case SDL_FINGERMOTION :
                     SDL_GetMouseState( &current_mouse_x, &current_mouse_y );
                     // permet de préparer les coordonnés pour le mode place_tower
                     TOWER_MOUSE->x = current_mouse_x;
@@ -252,7 +267,8 @@ int main( int argc, char* args[] )
                     }
                     break;
 
-                case SDL_MOUSEBUTTONDOWN:
+ //               case SDL_MOUSEBUTTONDOWN :
+                case SDL_FINGERUP :
 
                     // tentative de placer une nouvelle tour
                     if (flag_mode_place_tower && flag_tower_position_ok ) {
@@ -331,7 +347,7 @@ int main( int argc, char* args[] )
                 place_sprite(ARRIVE, my_level.cibleX, my_level.cibleY);
 
                 init_level_chemins(&my_level);
-                affiche_map_console ( &my_level);
+                //affiche_map_console ( &my_level);
 
 
                 /** CREATE ENEMY **/
@@ -407,6 +423,7 @@ int main( int argc, char* args[] )
 
             CounterTimeLevel++;
             CounterSecond = SDL_GetTicks();
+
         }
         /******************************************************************************************************************
                                                     COLLISION
@@ -478,9 +495,10 @@ int main( int argc, char* args[] )
         /**   Calcul du temps de traitement et pause   **/
         /************************************************/
         t_Apres_Traitement = SDL_GetTicks();
-        game_sleep = 1000 / GAME_FPS - (t_Avant_Traitement - t_Apres_Traitement);
+        game_sleep = (1000 / GAME_FPS) - (t_Avant_Traitement - t_Apres_Traitement);
         /** TODO :  calcul du temps de traitement sur Android **/
         //game_sleep = 1000 / GAME_FPS;
+
         SDL_Delay( game_sleep );
     }
 

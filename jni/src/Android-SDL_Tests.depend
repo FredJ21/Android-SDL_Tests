@@ -101,7 +101,7 @@
 	"config.h"
 	"affichage_texte.h"
 
-1448042406 c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\config.h
+1448119779 c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\config.h
 
 1447876903 c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\affichage_texte.h
 
@@ -137,7 +137,7 @@
 
 1447876903 c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\algo_collision.h
 
-1447876903 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\anim.c
+1448125214 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\anim.c
 	<SDL.h>
 	<SDL_ttf.h>
 	<stdio.h>
@@ -147,7 +147,7 @@
 	"level.h"
 	"anim.h"
 
-1448042089 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\battle_boats.c
+1448126040 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\battle_boats.c
 	<SDL.h>
 	<SDL_ttf.h>
 	<stdio.h>
@@ -165,7 +165,7 @@
 
 1447876903 c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\battle_boats.h
 
-1448042447 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\level.c
+1448043822 source:c:\users\fred\documents\fred-dev\android-sdl_tests\jni\src\level.c
 	<SDL.h>
 	<SDL_ttf.h>
 	<stdio.h>
