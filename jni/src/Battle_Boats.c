@@ -127,8 +127,8 @@ int main( int argc, char* args[] )
     ANIM[0].vitesse         = 2;
 
     strcpy(ANIM[1].file,   "images/PetitBateau2.bmp");
-    ANIM[1].tx              = 72;
-    ANIM[1].ty              = 72;
+    ANIM[1].tx              = 48;
+    ANIM[1].ty              = 48;
     ANIM[1].nb_colonne      = 3;
     ANIM[1].nb_image        = 12;
     ANIM[1].nb_img_by_dir   = 3;
