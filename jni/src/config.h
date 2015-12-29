@@ -20,7 +20,7 @@
 #define GAME_FPS              30       // a repasser à 30
 
 #define MAP_TAILLE_X         960
-#define MAP_TAILLE_Y         540
+#define MAP_TAILLE_Y         600
 #define MAP_NB_TILE_X         40
 #define MAP_NB_TILE_Y         23
 
