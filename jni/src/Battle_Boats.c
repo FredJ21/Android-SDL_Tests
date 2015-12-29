@@ -21,6 +21,8 @@ int main( int argc, char* args[] )
 {
 
     //printf("Go ...!!!\n");
+    SDL_Log("Fred DEBUG - Go 15:54\n");
+
 
     /******************************************************************************************************************
                                                 INIT SDL 2
@@ -31,8 +33,8 @@ int main( int argc, char* args[] )
 
     // Création de la fenêtre
     SDL_Window *pWindow = NULL;
-    pWindow = SDL_CreateWindow( APP_TITRE , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, MAP_TAILLE_X, MAP_TAILLE_Y, SDL_WINDOW_SHOWN );
-//    pWindow = SDL_CreateWindow( APP_TITRE , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP );
+//    pWindow = SDL_CreateWindow( APP_TITRE , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, MAP_TAILLE_X, MAP_TAILLE_Y, SDL_WINDOW_SHOWN );
+    pWindow = SDL_CreateWindow( APP_TITRE , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP );
     if(!pWindow) {                          printf( "SDL_Window ERREUR! SDL_GetError: %s\n", SDL_GetError() ); return -1;}
 
 
@@ -56,7 +58,8 @@ int main( int argc, char* args[] )
 
     SDL_RenderCopy (pRenderer, pTexture, NULL, NULL);
     SDL_RenderPresent (pRenderer);
-    SDL_Delay( 1000 );
+
+    SDL_Delay( 500 );
 
     /******************************************************************************************************************
                                                 INIT SDL 2 TTF
@@ -70,7 +73,7 @@ int main( int argc, char* args[] )
     if(!police_level_titre) {                  printf( "TTF_OpenFont ERREUR! SDL_GetError: %s\n", SDL_GetError() ); return -1;}
 
 
-
+    SDL_Log("Fred DEBUG - INIT SDL OK\n");
     /******************************************************************************************************************
                                                 VARIABLES
     *******************************************************************************************************************/
@@ -108,6 +111,7 @@ int main( int argc, char* args[] )
 
     srand(time(NULL));
 
+    SDL_Log("Fred DEBUG - INIT GAME\n");
     /******************************************************************************************************************
                                                 INIT GAME
     *******************************************************************************************************************/
@@ -174,6 +178,7 @@ int main( int argc, char* args[] )
     if(!my_score.police) {                  printf( "TTF_OpenFont ERREUR! SDL_GetError: %s\n", SDL_GetError() ); return -1;}
 
 
+    SDL_Log("Fred DEBUG - START MAIN LOOP\n");
     /******************************************************************************************************************
                                                 BOUCLE PRINCIPALE
     *******************************************************************************************************************/
@@ -315,6 +320,8 @@ int main( int argc, char* args[] )
         *******************************************************************************************************************/
         if (flag_change_level) {
 
+                SDL_Log("Fred DEBUG - Change_level\n");
+
                 // RAZ des flags
                 flag_change_level           = false;
                 flag_affiche_level_titre    = true;
@@ -330,27 +337,33 @@ int main( int argc, char* args[] )
 
                 my_score.level = current_level + 1;
 
-                /** NETTOYAGE **/
+               /** NETTOYAGE **/
+                SDL_Log("Fred DEBUG - Change_level Nettoyage\n");
                 for (a = 0; a < WAVE_NB * WAVE_ENEMY_MAX_BY_WAVE; a++) {
                     destroy_sprite(&ENEMY[a]);
                 }
                 for (a = 0; a <  TOWER_MAX; a++) {
                     destroy_tower(&TOWER[a]);
                 }
+                clear_level (&my_level);
 
                 /** LEVEL **/
-                clear_level (&my_level);
+                SDL_Log("Fred DEBUG - Change_level Init level\n");
                 init_level(&my_level, current_level, pSurface_TUILE, pRenderer);
                 //init_texture_obstacle(pRenderer, &my_level);
+                SDL_Log("Fred DEBUG - Change_level Init level 2\n");
                 init_level_titre(pRenderer, &my_level, police_level_titre);
 
+                SDL_Log("Fred DEBUG - Change_level Init level 3\n");
                 place_sprite(ARRIVE, my_level.cibleX, my_level.cibleY);
 
+                SDL_Log("Fred DEBUG - Change_level Init level 4\n");
                 init_level_chemins(&my_level);
                 //affiche_map_console ( &my_level);
 
 
                 /** CREATE ENEMY **/
+                SDL_Log("Fred DEBUG - Change_level Create Enemy\n");
                 for ( w = 0; w < WAVE_NB; w++ ) {
                     //printf ("Level %d - Wave %d - ", current_level, w);
                     b = 0;
@@ -378,6 +391,8 @@ int main( int argc, char* args[] )
                // printf ("Nombre d'ennemi : %d\n", current_nb_enemy);
 
                 CounterTimeLevel = 0;
+
+                SDL_Log("Fred DEBUG - Change_level OK\n");
 
         }
 

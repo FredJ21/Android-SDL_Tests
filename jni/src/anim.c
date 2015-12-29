@@ -124,6 +124,7 @@ void avance_sprite(t_sprite *s, t_level *pLevel){
 
     if (s->is_actif == true && s->is_arrive == false ) {
 
+
         // les ccordonnées du sprite correspondent à son centre
         // calcul des coordonnées des quatres coins
         HD.x = s->x + s->anim->tx/2 ;
@@ -150,6 +151,8 @@ void avance_sprite(t_sprite *s, t_level *pLevel){
         Centre.y = s->y;
         Centre.tileX = s->x / TILE_TAILLE_X;
         Centre.tileY = s->y / TILE_TAILLE_Y;
+
+        //SDL_Log("Fred DEBUG - Pos : %d x %d - %d x %d\n", Centre.x, Centre.y, Centre.tileX, Centre.tileY );
 
         // permet de demarrer en dehors de la map
         if (s->in_the_map == false) {
