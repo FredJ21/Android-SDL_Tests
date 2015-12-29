@@ -59,7 +59,7 @@ int main( int argc, char* args[] )
     SDL_RenderCopy (pRenderer, pTexture, NULL, NULL);
     SDL_RenderPresent (pRenderer);
 
-    SDL_Delay( 500 );
+    SDL_Delay( 5000 );
 
     /******************************************************************************************************************
                                                 INIT SDL 2 TTF
