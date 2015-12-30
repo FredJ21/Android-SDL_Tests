@@ -33,8 +33,8 @@ int main( int argc, char* args[] )
 
     // Création de la fenêtre
     SDL_Window *pWindow = NULL;
-//    pWindow = SDL_CreateWindow( APP_TITRE , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, MAP_TAILLE_X, MAP_TAILLE_Y, SDL_WINDOW_SHOWN );
-    pWindow = SDL_CreateWindow( APP_TITRE , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP );
+    pWindow = SDL_CreateWindow( APP_TITRE , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, MAP_TAILLE_X, MAP_TAILLE_Y, SDL_WINDOW_SHOWN );
+//    pWindow = SDL_CreateWindow( APP_TITRE , SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0, 0, SDL_WINDOW_FULLSCREEN_DESKTOP );
     if(!pWindow) {                          printf( "SDL_Window ERREUR! SDL_GetError: %s\n", SDL_GetError() ); return -1;}
 
 
@@ -59,7 +59,7 @@ int main( int argc, char* args[] )
     SDL_RenderCopy (pRenderer, pTexture, NULL, NULL);
     SDL_RenderPresent (pRenderer);
 
-    SDL_Delay( 5000 );
+    SDL_Delay( 1000 );
 
     /******************************************************************************************************************
                                                 INIT SDL 2 TTF
@@ -165,7 +165,7 @@ int main( int argc, char* args[] )
     /* SPRITE ENNEMI */
     t_sprite *ENEMY[WAVE_NB * WAVE_ENEMY_MAX_BY_WAVE];   //tableau de pointeurs
 
-    /* SPRITE ARRIVE */
+     /* SPRITE ARRIVE */
     t_sprite *ARRIVE;
     ARRIVE = init_sprite (&DRAPEAU);
 
@@ -322,6 +322,21 @@ int main( int argc, char* args[] )
 
                 SDL_Log("Fred DEBUG - Change_level\n");
 
+                /** NETTOYAGE **/
+                SDL_Log("Fred DEBUG - Change_level Nettoyage 1\n");
+                for (a = 0; a < current_nb_enemy ; a++) {
+                    SDL_Log("Fred DEBUG - clear ENEMY %d\n", a);
+                    destroy_sprite(&ENEMY[a]);
+                }
+                SDL_Log("Fred DEBUG - Change_level Nettoyage 2\n");
+                for (a = 0; a <  current_nb_tower; a++) {
+                    SDL_Log("Fred DEBUG - clear TOWER %d\n", a);
+                    destroy_tower(&TOWER[a]);
+                }
+                SDL_Log("Fred DEBUG - Change_level Nettoyage 3\n");
+                clear_level (&my_level);
+
+
                 // RAZ des flags
                 flag_change_level           = false;
                 flag_affiche_level_titre    = true;
@@ -337,15 +352,6 @@ int main( int argc, char* args[] )
 
                 my_score.level = current_level + 1;
 
-               /** NETTOYAGE **/
-                SDL_Log("Fred DEBUG - Change_level Nettoyage\n");
-                for (a = 0; a < WAVE_NB * WAVE_ENEMY_MAX_BY_WAVE; a++) {
-                    destroy_sprite(&ENEMY[a]);
-                }
-                for (a = 0; a <  TOWER_MAX; a++) {
-                    destroy_tower(&TOWER[a]);
-                }
-                clear_level (&my_level);
 
                 /** LEVEL **/
                 SDL_Log("Fred DEBUG - Change_level Init level\n");
@@ -521,10 +527,10 @@ int main( int argc, char* args[] )
                                                     FIN
     *******************************************************************************************************************/
     // Nettoyage
-    for (a = 0; a < WAVE_NB * WAVE_ENEMY_MAX_BY_WAVE; a++) {
+    for (a = 0; a < current_nb_enemy; a++) {
         destroy_sprite(&ENEMY[a]);
     }
-    for (a = 0; a <  TOWER_MAX; a++) {
+    for (a = 0; a <  current_nb_tower; a++) {
         destroy_tower(&TOWER[a]);
     }
 
